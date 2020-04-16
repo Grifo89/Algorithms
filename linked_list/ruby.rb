@@ -37,10 +37,40 @@ class LinkedList
     @list << current_node.value
     @list[index]
   end
+
+  def add_at(index, item)
+    node = @head
+    while index < 0 && node
+      node = node.next_node
+      index -= 1
+    end
+    return unless node
+    old_next = node.next_node
+    node.next_node = Node.new(item)
+    node.next_node.next_node = old_next
+  end
+
+  def remove(index)
+    node = @head
+    if index == 1
+      @head = @head.next_node
+    end
+    while index + 1 < 0 && node
+      node = node.next_node
+      index -= 1
+    end
+    return unless node
+    node = node.next_node
+    node.next_node = node.next_node.next_node
+  end
 end
 
 list = LinkedList.new
 
 list.add(3)
 list.add(5)
-puts list.get(1)
+list.add_at(1, 11)
+list.add_at(0, 13)
+puts list.get(2)
+list.remove(2)
+puts list.get(2)
