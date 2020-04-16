@@ -1,0 +1,5 @@
+Linked list is a data structure where each element is a node containing two pieces of information (for a single linked list) 1. its data 2. a reference to the next piece of data in the list.
+
+The primary benefit of linked lists is that they can contain an arbitrary number of values while using only the amount of memory necessary for those values. Preserving memory was very important an older computers where memory was scarce. At that time, a built-in array in C required you to specify how many items the array could contain and the program would reserve that amount of memory. Reserving that memory meant it could not be used for the rest of the program or any other programs running at the same time, even if the memory was never filled. One memory-scare machines, you could easily run out of available memory using arrays. Linked list were created to work around this problem. 
+
+Though originally intended for better memory management, linked lists also became popular when developers didn’t know how many items an array would ultimately contain.
