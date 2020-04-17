@@ -39,38 +39,55 @@ class LinkedList
   end
 
   def add_at(index, item)
-    node = @head
-    while index < 0 && node
-      node = node.next_node
-      index -= 1
+    if @head.nil?
+      @head = Node.new(item)
     end
-    return unless node
-    old_next = node.next_node
-    node.next_node = Node.new(item)
-    node.next_node.next_node = old_next
+    if index == 0
+      node = Node.new(item, @head)
+      @head = node
+    end
+    if index > 0
+      node = get_node(index - 1)
+      old_next = node.next_node
+      node.next_node = Node.new(item)
+      node.next_node.next_node = old_next
+    end
   end
 
   def remove(index)
-    node = @head
-    if index == 1
+    if @head.nil?
+      puts "The storage is empty"
+    end
+    if index == 0
       @head = @head.next_node
     end
-    while index + 1 < 0 && node
-      node = node.next_node
-      index -= 1
+    if index > 0
+      node = get_node(index - 1)
+      node.next_node = node.next_node.next_node
     end
-    return unless node
-    node = node.next_node
-    node.next_node = node.next_node.next_node
+  end
+
+  private
+
+  def get_node(index)
+    node = @head
+    index.times do
+      node = node.next_node
+    end
+    return node
   end
 end
 
 list = LinkedList.new
 
+list.add(8)
 list.add(3)
-list.add(5)
-list.add_at(1, 11)
-list.add_at(0, 13)
+list.add_at(1, 5)
+# list.add_at(2, 4)
+# puts list.get(2)
+# list.remove(1)
+puts list.get(0)
+puts list.get(1)
 puts list.get(2)
-list.remove(2)
-puts list.get(2)
+# puts list.get(3)
+# [8, 4, 3]
