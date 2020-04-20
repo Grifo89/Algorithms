@@ -67,6 +67,11 @@ class LinkedList
     end
   end
 
+  def empty?
+    return true if @head.nil?
+    return false if !@head.nil?
+  end
+
   private
 
   def get_node(index)
@@ -80,14 +85,17 @@ end
 
 list = LinkedList.new
 
-list.add(8)
-list.add(3)
-list.add_at(1, 5)
+# puts list.empty?
+# list.add(8)
+# list.add(3)
+# list.add_at(1, 5)
 # list.add_at(2, 4)
 # puts list.get(2)
-# list.remove(1)
-puts list.get(0)
-puts list.get(1)
-puts list.get(2)
+# puts list.empty?
+# list.remove(0)
+
+# puts list.get(0)
+# puts list.get(1)
+# puts list.get(2)
 # puts list.get(3)
 # [8, 4, 3]
