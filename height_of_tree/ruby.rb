@@ -6,7 +6,6 @@ def binary_tree_height(array_tree)
     i += 1
   end
   return i
-
 end
 
 puts binary_tree_height([2, 7, 5, 2, 6, 0, 9])
