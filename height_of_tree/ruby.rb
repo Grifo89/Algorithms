@@ -1,8 +1,7 @@
 def binary_tree_height(array_tree)
-  # write your code here
-  i = 0
   n = array_tree.length
-  while 2**i < n - 1
+  i = 0
+  while 2**i <= n
     i += 1
   end
   return i
