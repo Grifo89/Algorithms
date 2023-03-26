@@ -1,0 +1,51 @@
+// PROBLEM 
+Given two strings s and t, determine if they are isomorphic. 
+
+Two strings s and t are isomorphic if the characters in s can be replaced to ge t.
+
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself. 
+
+Example 1:
+
+Input: s = "egg", t = "add"
+Output: true
+
+Example 2:
+
+Input: s = "foo", t = "bar"
+Output: false
+
+// APPROACHES
+
+Approach 1
+    1. We will process both of the strings from left to right. At each step, we take one character at a time from the two strings sand compare them. 
+    2.1 If the characters don't have a mapping, we add one in the dictionary and move on 
+    2.2 The characters already have a mapping in the dictionary. If that is the case, then we're good to go and just compare them.
+    3 If the character match the mapping keep going if the travesing ends the string return true else return false. 
+
+Pseudocode 
+
+function isIsomorphic(str1: string, str2: string) => boolean
+    mapping_s_t: dictionary
+    mapping_t_s: dictionary
+
+    if(str1.length !== str2.length) return false
+
+    for idx = 0 to str1.length 
+        mapping_s_t[s[idx]] = t[idx]
+        mapping_t_s[t[idx]] = s[idx]
+
+    if mapping_s_t.keys == mapping_t_s.values
+        return true 
+    else 
+        return false
+
+Approach 2
+
+First occurence transformation
+
+    1. Define a function called transform that takes a string as an input and returns a new string with modifications as explained in the intuition 
+        a. We maintain a dictionary to store the character to index mapping for the given string.
+        b. For each character, we look up the mapping in the dictionary. If there is a mapping, that means this caracter already has its first occurrence recorded and we simply use the first occurrence's index in the new string, Otherwise, we use the current inde for the first occurence.
+    2. we find the transformed strings for both of our input strings. Let's say the transformed strings are s1 and s2 respectively. 
+    3. If s1 == s2, that implies the two input strings are isomorphic. Otherwise, they're not. 
