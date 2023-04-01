@@ -1,23 +1,35 @@
 let isIsomorphic: (str1: string, str2: string) => boolean
-type Mapping = {
-    [mapping: string]: string
+
+isIsomorphic = (s, t) => {
+
+    if (s.length != t.length) {
+        return false;
+    }
+    const mapS = new Map<string, number>();
+    const mapT = new Map<string, number>();
+
+    for (let i = 0; i < s.length; i++) {
+        if(mapS.get(s[i]) != mapT.get(t[i])) {
+            return false;
+        }
+        mapS.set(s[i], i);
+        mapT.set(t[i], i);
+    }
+
+    return true;
 }
 
-isIsomorphic = (str1, str2) => {
-    let mapping_s_t: Mapping = {}
-    let mapping_t_s: Mapping = {}
+// An othe approach
 
-    if (str1.length !== str2.length) return false
-
-    str1.split("").forEach((letter: string, idx: number ) => {
-        mapping_s_t[letter] = str2[idx]
-        mapping_t_s[str2[idx]] = letter
-    })
-
-    if(Object.keys(mapping_s_t).join("") === Object.values(mapping_t_s).reverse().join("")){
-        return true
-    } else {
-        return false
+function isIsomorphic2(s: string, t: string): boolean {
+    if (s.length != t.length) {
+        return false;
     }
- 
+    for (let i = 1; i < s.length; i++) {
+        // verify that the first occurrence of the current character occures at the same position in both. 
+        if (t.indexOf(t[i]) !== s.indexOf(s[i])) {
+            return false
+        }
+    }
+    return true;
 }
