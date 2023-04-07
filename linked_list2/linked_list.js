@@ -9,8 +9,28 @@ var Node2 = /** @class */ (function () {
 }());
 var LinkedList = /** @class */ (function () {
     function LinkedList() {
+        var _this = this;
         // head node is supposed to be first node, it's declare as a class variable.
         this.head = null;
+        // FUNCTION get: This function indexing the list by a index number
+        this.get = function (index) {
+            if (index < -1) {
+                return null;
+            }
+            ;
+            var node = _this.head;
+            var counter = 0;
+            while (counter < index && node !== null) {
+                if (!_this.head) {
+                    break;
+                }
+                else {
+                    node = node.next;
+                    counter += 1;
+                }
+            }
+            return node !== null ? node.data : null;
+        };
     }
     // FUNCTION insertInBegin function inserts a node at the beginning of the list.
     LinkedList.prototype.insertInBegin = function (data) {
@@ -119,3 +139,6 @@ linkedList.search(function (_a) {
     var title = _a.title;
     return title === "Post A";
 }); // Node { data: { title: "Post A" }, prev: Node, next: Node};
+console.log(linkedList.get(0));
+console.log(linkedList.get(2));
+console.log(linkedList.get(3));

@@ -12,10 +12,11 @@ interface ILinkedList<T> {
     deleteNode(node: Node2<T>);
     traverse(): T[];
     size(): number;
-    search(comparator: (data: T) => boolean): Node2<T> | null
+    search(comparator: (data: T) => boolean): Node2<T> | null;
+    get(index: number): T | null
 }
 
-class LinkedList<T> implements ILinkedList<T> {
+class LinkedList<T extends any> implements ILinkedList<T> {
     // head node is supposed to be first node, it's declare as a class variable.
     private head: Node2<T> | null = null
     // FUNCTION insertInBegin function inserts a node at the beginning of the list.
@@ -69,7 +70,7 @@ class LinkedList<T> implements ILinkedList<T> {
         }
     };
     // FUNCTION traverse: This function traverses the array. 
-    traverse(): T[] {
+    public traverse(): T[] {
         // 1. Creates an empty array
         const array: T[] = [];
         // 2. if the list is empty return the empty array
@@ -85,12 +86,12 @@ class LinkedList<T> implements ILinkedList<T> {
         return addToArray(this.head)
     };
     // FUNCTION size: This function returns the size of the list. 
-    size(): number {
+    public size(): number {
         // 1. Calls the traverse method to "transform" the list to an array and get the length of that array. 
         return this.traverse().length
     }
     // FUNCTION search: This function search a node based on a callback that returns a boolean value. 
-    search(comparator: (data: T) => boolean): Node2<T> | null {
+    public search(comparator: (data: T) => boolean): Node2<T> | null {
         // 1. Creates a helper recursive function, FUNCTION checkNext which iterates over the list checking the callback condition with each node. 
         const checkNext = (node: Node2<T>): Node2<T> | null => {
             // 2. Checks if the condition is true for the first node, if it's true returns the first node. 
@@ -102,6 +103,24 @@ class LinkedList<T> implements ILinkedList<T> {
         };
         // 4. If the list is not empty apply the recursive helper function checkNext, else return null. 
         return this.head ? checkNext(this.head) : null;
+    }
+    // FUNCTION get: This function indexing the list by a index number
+    public get = (index: number): T | null => {
+        if (index < -1) {
+            return null;
+        };
+        let node = this.head
+        let counter = 0;
+        while(counter < index && node !== null) {
+            if(!this.head){
+                break
+            } else {
+                node = node.next
+                counter += 1;
+            }
+            
+        }
+        return node !== null ? node.data : null
     }
     
 }
@@ -121,3 +140,6 @@ linkedList.insertInBegin({ title: "Post D" });
 
 linkedList.traverse() // [{ title : "Post D" }, { title : "Post C" }, { title : "Post A" }, { title : "Post B" }];
 linkedList.search(({ title }) => title === "Post A") // Node { data: { title: "Post A" }, prev: Node, next: Node};
+console.log(linkedList.get(0))
+console.log(linkedList.get(2))
+console.log(linkedList.get(3))
