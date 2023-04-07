@@ -106,7 +106,7 @@ class LinkedList<T extends any> implements ILinkedList<T> {
     }
     // FUNCTION get: This function indexing the list by a index number
     public get = (index: number): T | null => {
-        if (index < -1) {
+        if (index < 0) {
             return null;
         };
         let node = this.head

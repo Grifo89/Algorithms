@@ -65,6 +65,17 @@ class DoublyLinkedList:
             nextNode = node.next
             prevNode.next = node.next 
             nextNode.prev = prevNode
+
+    def get(self, index: int) -> Any:
+        if self.head is None or index < 0:
+            return None
+        counter = 0
+        node = self.head
+        while counter < index and node != None:
+            node = node.next
+            counter += 1
+        return node.data 
+
         
 if __name__ == "__main__":
   llist = DoublyLinkedList()
@@ -85,3 +96,6 @@ if __name__ == "__main__":
   llist.append(4)
 
   print(llist.traverse())
+  print(llist.get(0))
+  print(llist.get(2))
+  print(llist.get(3))
