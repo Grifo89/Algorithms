@@ -1,0 +1,8 @@
+A linked list is a linear collection of data elements whose order is not given by their physical placement in memory. Insted, each element points to the next. It is a data structure consisting of a collection of node which together represent a sequence.
+
+There are two main types of linked list:
+
+1. Singly linked list: a list where elements have only a reference to next element.
+2. Doubly linked list: a List where elements are linked to both next and previous elements.
+
+* Every item of the linked list is a node.
