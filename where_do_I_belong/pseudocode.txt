@@ -1,0 +1,33 @@
+Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
+
+Restating the problem
+---------------------
+1. sort the array
+2. find the array's item which is grater or equal than num 
+
+Inputs
+------
+1. Unsorted array
+2. A float number
+
+Outputs
+-------
+1. An interger which is the index postion number.
+
+Pseudocode
+
+function getIndexToints(arr, float):
+    1. Iterates the proces as arr.length times
+    for (i; i < arr.length ;i++):
+        2. Iterates over the whole array elements taking into account the position already sorted (i)
+        for (j; j < arr.length - i - 1; j++):
+            3. Swap the elements if hold the condition
+            if array[j + 1] < array[j]:
+                var tmp = array[j]
+                array[j] = array[j + 1]
+                array[j + 1] = tmp
+        
+    for (i; i < arr.length; i++):
+        if (arr[i] >= num) return i
+    
+    return arr.length
