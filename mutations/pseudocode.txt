@@ -1,0 +1,21 @@
+Problem
+-------
+Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array
+
+Input 
+-----
+- An Array with two elements of type string. 
+
+Output
+------
+- Returns a boolean
+
+Pseudocode
+----------
+
+function mutation(arr)
+    var str1 = transformStringToSet(arr[1])
+    var str2 = transformStringToSet(arr[2])
+
+    return checkIfSetsHasTheSameElements(str1, str2)
+
