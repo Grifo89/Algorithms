@@ -1,0 +1,20 @@
+Given a string s, find the longest palindromic subsequence's length in s.
+
+A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
+
+INPUT 
+-----
+- A string.
+
+OUTPUT 
+------
+- An integer, de length of the longest palindrom.
+
+PSEUDOCODE
+---------------
+1. generate ell the subsequences of the given string and find the longest.
+    a. Check if the last and first character are the same, if they are, both are consider in the final palindrom. 
+    b. Add 2 to the answer variable and recursively remove the first and last characters from the remaining substring. 
+
+
+
